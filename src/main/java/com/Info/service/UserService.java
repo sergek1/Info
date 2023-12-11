@@ -1,12 +1,15 @@
+package com.Info.service;
+
 import java.util.List;
 // import com.Info.repository.UserRepository;
+import com.Info.model.entity.MyUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 public interface UserService {
-    List<User> getAllUsers();
-    User getUserById(Long id);
-    void saveUser(User user);
+    List<MyUser> getAllUsers();
+    MyUser getUserById(Long id);
+    void saveUser(MyUser user);
     void deleteUser(Long id);
     void addUser(String username);
 }

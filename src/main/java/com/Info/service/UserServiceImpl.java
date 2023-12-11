@@ -1,3 +1,7 @@
+package com.Info.service;
+
+import com.Info.model.entity.MyUser;
+import com.Info.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -9,17 +13,17 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public List<User> getAllUsers() {
-        return (List<User>) userRepository.findAll();
+    public List<MyUser> getAllUsers() {
+        return (List<MyUser>) userRepository.findAll();
     }
 
     @Override
-    public User getUserById(Long id) {
+    public MyUser getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void saveUser(User user) {
+    public void saveUser(MyUser user) {
         userRepository.save(user);
     }
 
@@ -30,8 +34,8 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public void addUser(String username) {
-        User user = new User();
-        user.setUsername(username);
+        MyUser user = new MyUser();
+//        user.setUsername(username);
         userRepository.save(user);
     }
 }

@@ -1,17 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org"
+      lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User List</title>
 </head>
 <body>
-    <h1>User List</h1>
-    <ul>
-        <!-- Итерация по пользователям -->
-        <li th:each="user : ${users}">
-            <span th:text="${user.username}"></span>
-        </li>
-    </ul>
+    <div>
+        <h1>User List</h1>
+        <div>
+            <form method="post">
+
+                <input type="text" name="text" placeholder="Введите имя">
+                <button type="submit">Добавить</button>
+            </form>
+        </div>
+        <ul>
+            <!-- Итерация по пользователям -->
+
+
+            <li th:each="user : ${users}">
+                <span th:text="${user.username} ?: 'N/A'"></span>
+            </li>
+        </ul>
+    </div>
+
 </body>
 </html>
