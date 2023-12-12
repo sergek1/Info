@@ -1,0 +1,57 @@
+<!--<div class="u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xl u-clearfix u-group-elements u-group-elements-1"-->
+<!--     xmlns:th="http://www.w3.org/1999/xhtml">-->
+<!--    <div class="u-expanded-width-lg u-expanded-width-md u-expanded-width-xl u-expanded-width-xs u-list u-list-1">-->
+<!--        <div class="u-repeater u-repeater-1">-->
+<!--            <div class="u-container-align-left-xs u-container-style u-list-item u-repeater-item">-->
+<!--                <div class="u-container-layout u-similar-container u-valign-middle-xs u-container-layout-2">-->
+<!--                    <a href="/data"-->
+<!--                       class="u-align-center-lg u-align-center-xl u-align-left-md u-align-left-sm u-align-left-xs u-border-none u-btn u-btn-round u-button-style u-custom-item u-hover-feature u-hover-grey-5 u-none u-text-hover-custom-color-1 u-btn-1"><span-->
+<!--                            class="u-file-icon u-grey-5 u-icon u-icon-1"><img src="/images/back-image.png"-->
+<!--                                                                              alt=""></span>&nbsp;назад-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="u-container-align-left-xs u-container-style u-list-item u-repeater-item">-->
+<!--                <div class="u-container-layout u-similar-container u-valign-middle-xs u-container-layout-3">-->
+<!--                    <a class="u-align-center-lg u-align-center-xl u-align-left-md u-align-left-sm u-align-left-xs u-border-none u-btn u-btn-round u-button-style u-custom-item u-hover-feature u-hover-grey-5 u-none u-text-hover-custom-color-1 u-btn-2 u-dialog-link"-->
+<!--                       data-bs-toggle="modal" data-bs-target="#import-modal">Импорт<br>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="u-container-align-left-xs u-container-style u-list-item u-repeater-item">-->
+<!--                <div class="u-container-layout u-similar-container u-valign-middle-xs u-container-layout-4">-->
+<!--                    <a th:href="@{unload}"-->
+<!--                       class="u-align-center-lg u-align-center-xl u-align-left-md u-align-left-sm u-align-left-xs u-border-none u-btn u-btn-round u-button-style u-custom-item u-hover-feature u-hover-grey-5 u-none u-text-hover-custom-color-1 u-btn-3">Экспорт</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="u-container-align-left-xs u-container-style u-list-item u-repeater-item">-->
+<!--                <div class="u-container-layout u-similar-container u-valign-middle-xs u-container-layout-5">-->
+<!--                    <a class="u-align-center-lg u-align-center-xl u-align-left-md u-align-left-sm u-align-left-xs u-border-none u-btn u-btn-round u-button-style u-custom-item u-hover-feature u-hover-grey-5 u-none u-text-hover-custom-color-1 u-btn-4"-->
+<!--                       data-bs-toggle="modal" data-bs-target="#new-entry-modal">добавить запись<br>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<div th:fragment="table_navbar">
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom"
+         style="background-color: #1D2633">
+
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <a href="/data" class="u-align-center-lg u-align-center-xl u-align-left-md u-align-left-sm u-align-left-xs u-border-none
+                u-btn u-btn-round u-button-style u-custom-item u-hover-feature u-hover-grey-5 u-none
+                u-text-hover-custom-color-1 u-btn-1"><span
+                    class="u-file-icon u-grey-5 u-icon u-icon-1"><img src="/images/back-image.png"
+                                                                      alt="" width="50"></span>&nbsp;назад
+            </a>
+            <a class="me-3 py-2 navbar-style text-decoration-none" href="/import">Импорт</a>
+            <a class="me-3 py-2 navbar-style text-decoration-none" href="/all_tables"> Экспорт </a>
+            <a class="me-3 py-2 navbar-style text-decoration-none" href="/procedures"> Добавить </a>
+
+
+        </nav>
+    </div>
+</div>

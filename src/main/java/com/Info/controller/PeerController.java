@@ -18,9 +18,9 @@ import static java.lang.constant.ConstantDescs.NULL;
 
 @Controller
 @RequestMapping("/peers")
-public class PeersController {
+public class PeerController {
 
-    private static final Logger log = LoggerFactory.getLogger(PeersController.class);
+    private static final Logger log = LoggerFactory.getLogger(PeerController.class);
 
     @Autowired
     private CommonService<Peer, String> commonService;
@@ -29,6 +29,14 @@ public class PeersController {
     public String peers(Model model) throws SQLException {
         log.info("Accessing peers page");
         model.addAttribute("peers", commonService.getAll());
+        return "peers";
+    }
+
+    @GetMapping("/import")
+    public String importS(Model model) {
+        log.info("Accessing add peer form");
+        System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
+//        model.addAttribute("peers", new Peer());
         return "peers";
     }
 

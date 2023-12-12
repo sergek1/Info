@@ -9,15 +9,15 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public abstract class CommonService<T extends BaseEntity, V> {
+public abstract class CommonService<E extends BaseEntity<V>, V> {
 
-    protected final CommonRepository<T, V> commonRepository;
+    protected final CommonRepository<E, V> commonRepository;
 
-    public void add(T entity) {
+    public void add(E entity) {
         commonRepository.saveAndFlush(entity);
     }
 
-    public List<T> getAll() {
+    public List<E> getAll() {
         return commonRepository.findAll();
     }
 
@@ -25,7 +25,7 @@ public abstract class CommonService<T extends BaseEntity, V> {
         commonRepository.deleteById(id);
     }
 
-    public T findById(V id) {
+    public E findById(V id) {
         return commonRepository.findById(id).orElse(null);
     }
 

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf">
 <head>
-
+    <meta charset="UTF-8">
+    <title>Info</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <link href="//db.onlinewebfonts.com/c/c68e21ad1a10803b1ef491fd0392b067?family=SB+Sans+Text" rel="stylesheet"
@@ -9,18 +10,16 @@
     <link rel="stylesheet" href="/css/style.css" type="text/css">
 
     <header th:insert="~{navbar :: navbar}"></header>
-
 </head>
-<body class="background-style">
-<div class="table-state font-style font-color text-decoration-none nav-link-active formWrapper">
-    <!--  <li class="nav-link-active">-->
-    <form th:method="get" th:action="@{/peers}" style="float:left;">
-        <input class="table-button margin-table" type="submit" value="Peers">
-    </form>
+<body>
 
+<form th:method="get" th:action="@{/all_tables}" class="margin">
+    <input class="margin-t input-home" type="submit" value="Show all tables">
+</form>
 
-
-</div>
+<form th:method="get" th:action="@{/procedures}" class="margin">
+    <input type="submit" class="input-home" value="All procedures">
+</form>
 
 </body>
 </html>
