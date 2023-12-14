@@ -32,7 +32,6 @@ public class PeerController {
         log.info("Accessing peers page");
         List<Peer> peerList = commonService.getAll();
         System.out.println(peerList.toString());
-//        model.addAttribute("peer", new Peer());
         model.addAttribute("peers", peerList);
         return "peers";
     }
@@ -44,13 +43,6 @@ public class PeerController {
 //        model.addAttribute("peers", new Peer());
         return "peers";
     }
-
-//    @GetMapping("/add")
-//    public String addPeerForm(Model model) {
-//        log.info("Accessing add peer form");
-//        model.addAttribute("peers", new Peer());
-//        return "peers/add";
-//    }
 
     @PostMapping("/add")
     public String addPeer(
@@ -85,48 +77,26 @@ public class PeerController {
         log.info("Deleted peer with nickname {}", id);
         return "redirect:/peers";
     }
-
-    @PostMapping("/update/{id}")
-    public String updatePeer(@PathVariable Long id, Model model) {
-        model.addAttribute("peer", commonService.findById(id));
-        System.out.println("idididididid"+id);
-        log.info("Accessing update peer form for peer with nickname {}", id);
-        return "peers";
-    }
-//    @PostMapping("/update/{id}")
-//    public String updatePeer(@PathVariable String id, Model model) {
-//        model.addAttribute("peer", commonService.findById(id));
-//        log.info("Accessing update peer form for peer with nickname {}", id);
-//        return "peers/update";
-//    }
-//
-//    @PostMapping("/update")
-//    public String update(@ModelAttribute("peers") Peers updatedPeer) {
-//        commonService.add(updatedPeer);
-//        log.info("Updated peer with nickname {}", updatedPeer.getNickname());
-//        return "redirect:/peers";
-//    }
     @PostMapping("/update")
-    public String update(@ModelAttribute("peer") Peer updatedPeer,@PathVariable Long id, Model model) {
-//        model.addAttribute("peer", new Peer());
+    public String update(
+//            @ModelAttribute("peer") Peer updatedPeer, Model model
+    @RequestParam("id") Long id,
+    @RequestParam("updatedNickname") String newNickname,
+    @RequestParam("updatedBirthday") LocalDate newBirthday
+    ) {
         // Получите существующий объект Peer из базы данных по его идентификатору
-        Peer existingPeer = commonService.findById(updatedPeer.getId());
+        System.out.println("updatedPeerID====================="+id);
+        Peer existingPeer = commonService.findById(id);
 
         if (existingPeer != null) {
-            // Обновите существующий объект с новыми данными
-            existingPeer.setNickname(updatedPeer.getNickname());
-            existingPeer.setBirthday(updatedPeer.getBirthday());
-
-            // Сохраните обновленный объект в базе данных
-            commonService .add(existingPeer);
-            commonService .save(existingPeer);
+            existingPeer.setNickname(newNickname);
+            existingPeer.setBirthday(newBirthday);
+            commonService.add(existingPeer);
             System.out.println("AAAAAAAAAAAAAAAAAAAAAABBB"+existingPeer);
             log.info("Updated peer with nickname {}", existingPeer.getNickname());
         }else {
             System.out.println("AAAAAAAAAAAAAAAAAAAAAA");
         }
-
-//        commonService.add(peer);
-        return "peers";
+        return "redirect:/peers";
     }
 }
