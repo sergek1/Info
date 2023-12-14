@@ -10,14 +10,34 @@
     font-style: normal;
 }
 
+.input-home1 {
+    border-radius: 5px;
+    color: #212121;
+    height: 40px;
+    width: 140px;
+    background-color: #44EB99;
+    border: none;
+    font-family: "SB Sans", sans-serif;
+    font-size: 13px;
+    font-style: normal;
+}
+
 .input-home:hover {
     height: 40px;
     border-radius: 5px;
     color: #FFFFFF;
     background-color: #BA1BFF;
     border: none;
-
 }
+
+.input-home1:hover {
+    height: 40px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #BA1BFF;
+    border: none;
+}
+
 .input-different {
     border-radius: 5px;
     background-color: rgb(232, 240, 254);

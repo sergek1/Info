@@ -58,6 +58,7 @@ public class PeerController {
         return "redirect:/peers";
     }
 
+
     @PostMapping()
     public String create(@ModelAttribute("peers") @Valid Peer peer, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
@@ -71,31 +72,33 @@ public class PeerController {
         return "redirect:/peers";
     }
 
-    @PostMapping("/delete/{id}")
-    public String delete(@PathVariable Long id) {
-        commonService.deleteById(id);
-        log.info("Deleted peer with nickname {}", id);
-        return "redirect:/peers";
-    }
+
     @PostMapping("/update")
     public String update(
-//            @ModelAttribute("peer") Peer updatedPeer, Model model
-    @RequestParam("id") Long id,
-    @RequestParam("updatedNickname") String newNickname,
-    @RequestParam("updatedBirthday") LocalDate newBirthday
+            @RequestParam("id") Long id,
+            @RequestParam("updatedNickname") String newNickname,
+            @RequestParam("updatedBirthday") LocalDate newBirthday
     ) {
-        // Получите существующий объект Peer из базы данных по его идентификатору
-        System.out.println("updatedPeerID====================="+id);
         Peer existingPeer = commonService.findById(id);
-
         if (existingPeer != null) {
             existingPeer.setNickname(newNickname);
             existingPeer.setBirthday(newBirthday);
             commonService.add(existingPeer);
-            System.out.println("AAAAAAAAAAAAAAAAAAAAAABBB"+existingPeer);
-            log.info("Updated peer with nickname {}", existingPeer.getNickname());
-        }else {
-            System.out.println("AAAAAAAAAAAAAAAAAAAAAA");
+        } else {
+            System.out.println("update not executed");
+        }
+        return "redirect:/peers";
+    }
+
+    @PostMapping("/delete")
+    public String delete(
+            @RequestParam("id") Long id
+    ) {
+        Peer existingPeer = commonService.findById(id);
+        if (existingPeer != null) {
+            commonService.deleteById(id);
+        } else {
+            System.out.println("delete not executed");
         }
         return "redirect:/peers";
     }
