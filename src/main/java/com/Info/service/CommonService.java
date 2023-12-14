@@ -13,6 +13,9 @@ public abstract class CommonService<E extends BaseEntity<V>, V> {
 
     protected final CommonRepository<E, V> commonRepository;
 
+    public void save(E entity) {
+        commonRepository.save(entity);
+    }
     public void add(E entity) {
         commonRepository.saveAndFlush(entity);
     }

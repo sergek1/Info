@@ -15,10 +15,10 @@ public class Recommendation extends BaseEntity<Long> {
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "peer", referencedColumnName = "nickname")
+    @JoinColumn(name = "peer", referencedColumnName = "id")
     private Peer peer;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "recommended_peer", referencedColumnName = "nickname")
+    @JoinColumn(name = "recommended_peer", referencedColumnName = "id")
     private Peer recommendedPeer;
 }

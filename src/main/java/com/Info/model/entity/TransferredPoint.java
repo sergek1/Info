@@ -15,11 +15,11 @@ public class TransferredPoint extends BaseEntity<Long> {
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "checking_peer", referencedColumnName = "nickname")
+    @JoinColumn(name = "checking_peer", referencedColumnName = "id")
     private Peer checkingPeer;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "checked_peer", referencedColumnName = "nickname")
+    @JoinColumn(name = "checked_peer", referencedColumnName = "id")
     private Peer checkedPeer;
 
     @Column(name = "points_amount")

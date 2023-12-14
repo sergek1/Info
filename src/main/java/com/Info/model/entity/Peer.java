@@ -1,9 +1,7 @@
 package com.Info.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.annotation.Nullable;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,17 +11,16 @@ import java.time.LocalDate;
 @Data
 @Table(name = "peers")
 @EqualsAndHashCode(callSuper = false)
-public class Peer extends BaseEntity<String> {
+public class Peer extends BaseEntity<Long> {
 
     @Id
-    @Column(name = "nickname")
-    private String nickname;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id;
+
+    @Column(name = "nickname", nullable = false)
+    public String nickname;
 
     @Column(name = "birthday", nullable = false)
-    private LocalDate birthday;
+    public LocalDate birthday;
 
-    @Override
-    public String getId() {
-        return nickname;
-    }
 }

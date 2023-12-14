@@ -21,7 +21,7 @@ public class P2P extends BaseEntity<Long> {
     private Check check;
 
     @OneToOne
-    @JoinColumn(name = "checking_peer", referencedColumnName = "nickname")
+    @JoinColumn(name = "checking_peer", referencedColumnName = "id")
     private Peer checkingPeer;
 
     @Column(name = "state")

@@ -18,7 +18,7 @@ public class TimeTracking extends BaseEntity<Long> {
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "peer", referencedColumnName = "nickname")
+    @JoinColumn(name = "peer", referencedColumnName = "id")
     private Peer peer;
 
     @Column(name = "date")

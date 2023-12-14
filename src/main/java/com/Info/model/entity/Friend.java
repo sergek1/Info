@@ -16,10 +16,10 @@ public class Friend extends BaseEntity<Long> {
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "peer1", referencedColumnName = "nickname")
+    @JoinColumn(name = "peer1", referencedColumnName = "id")
     private Peer peer1;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "peer2", referencedColumnName = "nickname")
+    @JoinColumn(name = "peer2", referencedColumnName = "id")
     private Peer peer2;
 }

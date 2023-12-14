@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PeerService extends CommonService<Peer, String> {
+public class PeerService extends CommonService<Peer, Long> {
 
     private final PeerRepository repository;
 
@@ -16,8 +16,8 @@ public class PeerService extends CommonService<Peer, String> {
         this.repository = repository;
     }
 
-    public boolean existsByNickname(String nickname) {
-        return repository.existsById(nickname);
+    public boolean existsByNickname(Long id) {
+        return repository.existsById(id);
     }
 
 }
