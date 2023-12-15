@@ -8,8 +8,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Table(name = "friends")
 @EqualsAndHashCode(callSuper = false)
-public class Friend extends BaseEntity<Long> {
-
+public class Friends extends BaseEntity<Long> {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

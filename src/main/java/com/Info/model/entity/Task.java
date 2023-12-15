@@ -1,6 +1,7 @@
 package com.Info.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,6 +17,8 @@ public class Task extends BaseEntity<String> {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_task", referencedColumnName = "title")
+//@NotNull
+//@Column(name = "parenttask", nullable = false)
     private Task parentTask;
 
     @Column(name = "max_xp")

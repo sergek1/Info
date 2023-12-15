@@ -13,12 +13,45 @@
 </head>
 <body class="background-style">
 <div class="table-state font-style font-color text-decoration-none nav-link-active formWrapper">
-    <!--  <li class="nav-link-active">-->
     <form th:method="get" th:action="@{/peers}" style="float:left;">
         <input class="table-button margin-table" type="submit" value="Peers">
     </form>
 
+    <form th:method="get" th:action="@{/checks}" style="float:left;">
+        <input class="table-button margin-table" type="submit" value="Checks">
+    </form>
 
+    <form th:method="get" th:action="@{/friends}" style="float:left;">
+        <input class="table-button margin-table" type="submit" value="Friends">
+    </form>
+
+    <form th:method="get" th:action="@{/p2p}" style="float:left;">
+        <input class="table-button margin-table" type="submit" value="P2P">
+    </form>
+
+    <form th:method="get" th:action="@{/recommendations}" style="float:left;">
+        <input class="table-button margin-table" type="submit" value="Recommendations">
+    </form>
+
+    <form th:method="get" th:action="@{/tasks}" style="float:left;">
+        <input class="table-button margin-table" type="submit" value="Tasks">
+    </form>
+
+    <form th:method="get" th:action="@{/timeTracking}" style="float:left;">
+        <input class="table-button margin-table" type="submit" value="Time Tracking">
+    </form>
+
+    <form th:method="get" th:action="@{/transferredPoints}" style="float:left;">
+        <input class="table-button margin-table" type="submit" value="Transferred Points">
+    </form>
+
+    <form th:method="get" th:action="@{/verter}" style="float:left;">
+        <input class="table-button margin-table" type="submit" value="Verter">
+    </form>
+
+    <form th:method="get" th:action="@{/xp}" style="float:left;">
+        <input class="table-button margin-table" type="submit" value="XP">
+    </form>
 
 </div>
 

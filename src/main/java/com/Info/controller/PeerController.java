@@ -39,17 +39,13 @@ public class PeerController {
     @GetMapping("/import")
     public String importS(Model model) {
         log.info("Accessing add peer form");
-        System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
-//        model.addAttribute("peers", new Peer());
+        System.out.println("import import import import");
         return "peers";
     }
 
     @PostMapping("/add")
-    public String addPeer(
-            @RequestParam("newNickname") String newNickname,
-            @RequestParam("newBirthday") LocalDate newBirthday
-    ) {
-
+    public String addPeer(@RequestParam("newNickname") String newNickname,
+                          @RequestParam("newBirthday") LocalDate newBirthday) {
         Peer peer = new Peer();
         peer.setBirthday(newBirthday);
         peer.setNickname(newNickname);
@@ -58,19 +54,18 @@ public class PeerController {
         return "redirect:/peers";
     }
 
-
-    @PostMapping()
-    public String create(@ModelAttribute("peers") @Valid Peer peer, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("error", NULL);
-            log.error("Error while creating peer: {}", bindingResult.getAllErrors());
-        } else {
-            commonService.add(peer);
-            redirectAttributes.addFlashAttribute("success", NULL);
-            log.info("Created a new peer with nickname {}", peer.getNickname());
-        }
-        return "redirect:/peers";
-    }
+//    @PostMapping()
+//    public String create(@ModelAttribute("peers") @Valid Peer peer, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+//        if (bindingResult.hasErrors()) {
+//            redirectAttributes.addFlashAttribute("error", NULL);
+//            log.error("Error while creating peer: {}", bindingResult.getAllErrors());
+//        } else {
+//            commonService.add(peer);
+//            redirectAttributes.addFlashAttribute("success", NULL);
+//            log.info("Created a new peer with nickname {}", peer.getNickname());
+//        }
+//        return "redirect:/peers";
+//    }
 
 
     @PostMapping("/update")

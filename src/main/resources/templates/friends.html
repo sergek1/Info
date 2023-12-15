@@ -35,25 +35,27 @@
 
 <table class="container">
     <tr>
-        <td class="col2">Nickname</td>
-        <td class="col2">Birthday</td>
+        <td class="col2">Peer 1</td>
+        <td class="col2">Peer 2</td>
         <td class="col2">Обновить</td>
         <td class="col2">Удалить</td>
     </tr>
 
-    <tr th:each="peer : ${peers}">
-        <td class="col1" th:text="${peer.nickname}"></td>
-        <td class="col1" th:text="${peer.birthday}"></td>
+    <tr th:each="friend : ${friends}">
+        <td class="col1" th:text="${friend.getPeer1().getNickname()}"></td>
+        <td class="col1" th:text="${friend.getPeer2().getNickname()}"></td>
         <td>
-            <button type="button" class="input-home" data-toggle="modal" data-target="#updateModal+${peer.id}"
-                    th:data-id="${peer.id}" th:data-nickname="${peer.nickname}" th:data-birthday="${peer.birthday}"
+            <button type="button" class="input-home" data-toggle="modal" data-target="#updateModal+${friend.id}"
+                    th:data-id="${friend.getId()}"
+                    th:data-peer1="${friend.getPeer1().getNickname()}"
+                    th:data-peer2="${friend.getPeer2().getNickname()}"
             >Update
             </button>
         </td>
 
         <td>
             <button type="button" class="input-home1" data-toggle="modal" data-target="#deleteModal"
-                    th:data-id="${peer.getId()}">
+                    th:data-id="${friend.getId()}">
                 Delete
             </button>
         </td>
@@ -61,7 +63,7 @@
 
     <td>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addPeerModal">
-            Add New Peer
+            Add New Friends
         </button>
     </td>
 </table>
@@ -78,7 +80,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form th:method="POST" th:action="@{/peers/delete}"  id="deleteForm">
+                <form th:method="POST" th:action="@{/friends/delete}" id="deleteForm">
                     <input type="hidden" name="id" id="deleteId"/>
                     <p>Are you sure you want to delete this peer?</p>
                     <button type="submit" class="btn btn-danger">Yes</button>
@@ -89,60 +91,44 @@
     </div>
 </div>
 
-<script th:inline="javascript">
-    $(document).ready(function () {
-        // Обработчик события открытия модального окна
-        $('button.input-home').click(function () {
-            var id = $(this).data('id');
-            var nickname = $(this).data('nickname');
-            var birthday = $(this).data('birthday');
 
-            // Установка значений в форму
-            $('#updatedId').val(id);
-            $('#updatedNickname').val(nickname);
-            $('#updatedBirthday').val(birthday);
-        });
-
-        // Обработчик события отправки формы
-        $('#updateForm').submit(function (event) {
-            // Ваш код обработки формы, если необходимо
-            // ...
-        });
-    });
-
-     $(document).ready(function () {
-        // Обработчик события открытия модального окна
-        $('button.input-home1').click(function () {
-            var id = $(this).data('id');
-            $('#deleteId').val(id);
-        });
-    });
-</script>
-
-<!-- Модальное окно для добавления нового Peer -->
+<!-- Модальное окно для добавления нового Friends -->
 <div class="modal fade" id="addPeerModal" tabindex="-1" role="dialog" aria-labelledby="addPeerModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addPeerModalLabel">Add New Peer</h5>
+                <h5 class="modal-title" id="addPeerModalLabel">Add New Friends</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
             <div class="modal-body">
-                <form th:method="POST" th:action="@{/peers/add}">
+                <form th:method="POST" th:action="@{/friends/add}">
                     <div class="form-group">
-                        <label for="newNickname">Nickname:</label>
-                        <input type="text" class="form-control" id="newNickname" name="newNickname">
+                        <label for="newPeer1">Peer 1:</label>
+                        <select class="form-control" id="newPeer1" name="newPeer1Id">
+                            <option th:each="peer : ${peers}"
+                                    th:value="${peer.getId()}"
+                                    th:text="${peer.getNickname()}"></option>
+                        </select>
                     </div>
+
                     <div class="form-group">
-                        <label for="newBirthday">Birthday:</label>
-                        <input type="date" class="form-control" id="newBirthday" name="newBirthday">
+                        <label for="newPeer2">Peer 2:</label>
+                        <select class="form-control" id="newPeer2" name="newPeer2Id">
+                            <option th:each="peer : ${peers}"
+                                    th:value="${peer.getId()}"
+                                    th:text="${peer.getNickname()}"></option>
+                        </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Add Peer</button>
+
+                    <button type="submit" class="btn btn-primary">Добавить</button>
                 </form>
             </div>
+
+
         </div>
     </div>
 </div>
@@ -159,22 +145,67 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form th:method="POST" th:action="@{/peers/update}" id="updateForm">
+                <form th:method="POST" th:action="@{/friends/update}" id="updateForm">
                     <input type="hidden" name="id" id="updatedId"/>
+
                     <div class="form-group">
-                        <label for="updatedNickname">Nickname:</label>
-                        <input type="text" class="form-control" id="updatedNickname" name="updatedNickname">
+                        <label for="updatedPeer1">Peer 1:</label>
+                        <select class="form-control" id="updatedPeer1" name="updatedId1">
+                            <option th:each="peer : ${peers}"
+                                    th:value="${peer.getNickname()}"
+                                    th:text="${peer.getNickname()}"
+                                    th:data-peer-id="${peer.getId()}"
+                            ></option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="updatedBirthday">Birthday:</label>
-                        <input type="date" class="form-control" id="updatedBirthday" name="updatedBirthday">
+                        <label for="updatedPeer2">Peer 2:</label>
+                        <select class="form-control" id="updatedPeer2" name="updatedId2">
+                            <option th:each="peer : ${peers}"
+                                    th:value="${peer.getNickname()}"
+                                    th:text="${peer.getNickname()}"
+                                    th:data-peer-id="${peer.getId()}"
+                            ></option>
+                        </select>
                     </div>
+                    <input type="hidden" id="selectedPeerId1" name="peerId1"/>
+                    <input type="hidden" id="selectedPeerId2" name="peerId2"/>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<script th:inline="javascript">
+    $(document).ready(function () {
+        $('button.input-home').click(function () {
+            var id = $(this).data('id');
+            var namePeer1 = $(this).data('peer1');
+            var namePeer2 = $(this).data('peer2');
+            $('#updatedId').val(id);
+            $('#updatedPeer1').val(namePeer1);
+            $('#updatedPeer2').val(namePeer2);
+        });
+
+        $('#updateForm').submit(function (event) {
+            var selectedPeerId1 = $('#updatedPeer1 option:selected').data('peer-id');
+            var selectedPeerId2 = $('#updatedPeer2 option:selected').data('peer-id');
+            $('#selectedPeerId1').val(selectedPeerId1);
+            $('#selectedPeerId2').val(selectedPeerId2);
+        });
+    });
+
+     $(document).ready(function () {
+        // Обработчик события открытия модального окна
+        $('button.input-home1').click(function () {
+            var id = $(this).data('id');
+            $('#deleteId').val(id);
+        });
+    });
+
+
+</script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
