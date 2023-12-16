@@ -33,7 +33,7 @@ public class CheckController {
     private CommonService<Peer, Long> peerCommonService;
 
     @Autowired
-    private CommonService<Task, String> taskCommonService;
+    private CommonService<Task, Long> taskCommonService;
 
     @GetMapping()
     public String checks(Model model) throws SQLException {
@@ -54,7 +54,7 @@ public class CheckController {
 
     @PostMapping("/add")
     public String addCheck(@RequestParam("peerId") Long peerId,
-                           @RequestParam("taskId") String taskId,
+                           @RequestParam("taskId") Long taskId,
                            @RequestParam("date") LocalDate date
     ) {
         System.out.println("============================ peerId=" + peerId + " taskId=" + taskId);
@@ -74,7 +74,7 @@ public class CheckController {
     public String update(
             @RequestParam("id") Long id,
             @RequestParam("peerId") Long peerId,
-            @RequestParam("taskId") String taskId,
+            @RequestParam("taskId") Long taskId,
             @RequestParam("date") LocalDate date
     ) {
         Check existingCheck = checkCommonService.findById(id);
