@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf">
 <head>
+    <title>Friends</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
@@ -15,23 +16,23 @@
 <header th:insert="~{navbar :: navbar}"></header>
 
 <!--<div th:insert="~{table_navbar :: table_navbar}"></div>-->
-<div th:fragment="table_navbar">
-    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom"
-         style="background-color: #1D2633">
+<!--<div th:fragment="table_navbar">-->
+<!--    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom"-->
+<!--         style="background-color: #1D2633">-->
 
-        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-            <a href="/data" class="u-align-center-lg u-align-center-xl u-align-left-md u-align-left-sm u-align-left-xs u-border-none
-                u-btn u-btn-round u-button-style u-custom-item u-hover-feature u-hover-grey-5 u-none
-                u-text-hover-custom-color-1 u-btn-1"><span
-                    class="u-file-icon u-grey-5 u-icon u-icon-1"><img src="/images/back-image.png"
-                                                                      alt="" width="50"></span>&nbsp;назад
-            </a>
-            <a class="me-3 py-2 navbar-style text-decoration-none" href="/import">Импорт</a>
-            <a class="me-3 py-2 navbar-style text-decoration-none" href="/all_tables"> Экспорт </a>
-            <a class="me-3 py-2 navbar-style text-decoration-none" href="/procedures"> Добавить </a>
-        </nav>
-    </div>
-</div>
+<!--        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">-->
+<!--            <a href="/data" class="u-align-center-lg u-align-center-xl u-align-left-md u-align-left-sm u-align-left-xs u-border-none-->
+<!--                u-btn u-btn-round u-button-style u-custom-item u-hover-feature u-hover-grey-5 u-none-->
+<!--                u-text-hover-custom-color-1 u-btn-1"><span-->
+<!--                    class="u-file-icon u-grey-5 u-icon u-icon-1"><img src="/images/back-image.png"-->
+<!--                                                                      alt="" width="50"></span>&nbsp;назад-->
+<!--            </a>-->
+<!--            <a class="me-3 py-2 navbar-style text-decoration-none" href="/import">Импорт</a>-->
+<!--            <a class="me-3 py-2 navbar-style text-decoration-none" href="/all_tables"> Экспорт </a>-->
+<!--            <a class="me-3 py-2 navbar-style text-decoration-none" href="/procedures"> Добавить </a>-->
+<!--        </nav>-->
+<!--    </div>-->
+<!--</div>-->
 
 <table class="container">
     <tr>
@@ -74,7 +75,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Delete Peer</h5>
+                <h5 class="modal-title" id="deleteModalLabel">Delete Friends</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -82,7 +83,7 @@
             <div class="modal-body">
                 <form th:method="POST" th:action="@{/friends/delete}" id="deleteForm">
                     <input type="hidden" name="id" id="deleteId"/>
-                    <p>Are you sure you want to delete this peer?</p>
+                    <p>Are you sure you want to delete this friends?</p>
                     <button type="submit" class="btn btn-danger">Yes</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                 </form>
@@ -123,23 +124,20 @@
                                     th:text="${peer.getNickname()}"></option>
                         </select>
                     </div>
-
                     <button type="submit" class="btn btn-primary">Добавить</button>
                 </form>
             </div>
-
-
         </div>
     </div>
 </div>
 
 <!-- Модальное окно для обновления -->
-<div class="modal fade" id="updateModal+${peer.id}" tabindex="-1" role="dialog"
+<div class="modal fade" id="updateModal+${friend.id}" tabindex="-1" role="dialog"
      aria-labelledby="updateModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update Peer</h5>
+                <h5 class="modal-title" id="updateModalLabel">Update Friends</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -203,6 +201,7 @@
             $('#deleteId').val(id);
         });
     });
+
 
 
 </script>

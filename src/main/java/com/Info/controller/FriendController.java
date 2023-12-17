@@ -1,10 +1,8 @@
 package com.Info.controller;
 
-import com.Info.model.entity.Check;
 import com.Info.model.entity.Friends;
 import com.Info.model.entity.Peer;
 import com.Info.service.CommonService;
-import com.Info.service.FriendService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.List;
 
 
@@ -51,8 +48,6 @@ public class FriendController {
     @PostMapping("/add")
     public String addCheck(@RequestParam("newPeer1Id") Long id1,
                            @RequestParam("newPeer2Id") Long id2) {
-        System.out.println("============================ id1=" + id1 + " id2=" + id2);
-
         Peer peer1 = peerCommonService.findById(id1);
         Peer peer2 = peerCommonService.findById(id2);
         Friends friends = new Friends();
@@ -61,7 +56,6 @@ public class FriendController {
         friendsCommonService.save(friends);
         return "redirect:/friends";
     }
-
 
     @PostMapping("/update")
     public String update(
@@ -82,9 +76,7 @@ public class FriendController {
     }
 
     @PostMapping("/delete")
-    public String delete(
-            @RequestParam("id") Long id
-    ) {
+    public String delete(@RequestParam("id") Long id) {
         Friends existingFriend = friendsCommonService.findById(id);
         if (existingFriend != null) {
             friendsCommonService.deleteById(id);

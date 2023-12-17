@@ -57,7 +57,6 @@ public class CheckController {
                            @RequestParam("taskId") Long taskId,
                            @RequestParam("date") LocalDate date
     ) {
-        System.out.println("============================ peerId=" + peerId + " taskId=" + taskId);
 
         Peer peer = peerCommonService.findById(peerId);
         Task task = taskCommonService.findById(taskId);

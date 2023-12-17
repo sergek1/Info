@@ -21,7 +21,7 @@ public class Check extends BaseEntity<Long>  {
     private Peer peer;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "task", referencedColumnName = "title")
+    @JoinColumn(name = "task", referencedColumnName = "id")
     private Task task;
 
     @Column(name = "date", nullable = false)

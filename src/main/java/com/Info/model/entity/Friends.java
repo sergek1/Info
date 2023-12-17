@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
-@Table(name = "friends")
+@Table(name = "friends", uniqueConstraints = @UniqueConstraint(columnNames = {"peer1", "peer2"}))
 @EqualsAndHashCode(callSuper = false)
 public class Friends extends BaseEntity<Long> {
     @Id
@@ -14,11 +14,11 @@ public class Friends extends BaseEntity<Long> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "peer1", referencedColumnName = "id")
     private Peer peer1;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "peer2", referencedColumnName = "id")
     private Peer peer2;
 }

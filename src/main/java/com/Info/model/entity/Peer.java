@@ -1,6 +1,5 @@
 package com.Info.model.entity;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,5 +21,4 @@ public class Peer extends BaseEntity<Long> {
 
     @Column(name = "birthday", nullable = false)
     public LocalDate birthday;
-
 }
