@@ -1,8 +1,8 @@
 # Info
 
-Info - это Web-приложение, поддерживающее CRUD-операции:
+Info - это Web-приложение, поддерживающее выполнение CRUD-операций:
 - создается база данных с таблицами Peers, Friends, Tasks, Checks;
-- рендеринг страниц осуществляется на стороне сервера (технологии Server-Side Rendering);  
+- рендеринг страниц осуществляется на стороне сервера (технология Server-Side Rendering);  
 - Spring Boot, Controller, JpaRepository, Java;  
 - HTML, CSS.
 
