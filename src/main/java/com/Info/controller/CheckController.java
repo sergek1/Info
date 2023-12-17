@@ -74,7 +74,7 @@ public class CheckController {
             @RequestParam("id") Long id,
             @RequestParam("peerId") Long peerId,
             @RequestParam("taskId") Long taskId,
-            @RequestParam("date") LocalDate date
+            @RequestParam("updatedDate") LocalDate date
     ) {
         Check existingCheck = checkCommonService.findById(id);
         if (existingCheck != null) {
