@@ -41,7 +41,6 @@ public class FriendController {
 
     @GetMapping("/import")
     public String importS(Model model) {
-        System.out.println("import import import import");
         return "friends";
     }
 

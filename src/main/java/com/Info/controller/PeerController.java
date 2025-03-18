@@ -2,21 +2,19 @@ package com.Info.controller;
 
 import com.Info.model.entity.Peer;
 import com.Info.service.CommonService;
-import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
-
-import static java.lang.constant.ConstantDescs.NULL;
 
 @Controller
 @RequestMapping("/peers")
@@ -53,20 +51,6 @@ public class PeerController {
         System.out.println("newNickname=" + newNickname + " newBirthday=" + newBirthday);
         return "redirect:/peers";
     }
-
-//    @PostMapping()
-//    public String create(@ModelAttribute("peers") @Valid Peer peer, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-//        if (bindingResult.hasErrors()) {
-//            redirectAttributes.addFlashAttribute("error", NULL);
-//            log.error("Error while creating peer: {}", bindingResult.getAllErrors());
-//        } else {
-//            commonService.add(peer);
-//            redirectAttributes.addFlashAttribute("success", NULL);
-//            log.info("Created a new peer with nickname {}", peer.getNickname());
-//        }
-//        return "redirect:/peers";
-//    }
-
 
     @PostMapping("/update")
     public String update(
