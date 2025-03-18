@@ -3,7 +3,7 @@
 Info - это Web-приложение, поддерживающее выполнение CRUD-операций:
 - создается база данных с таблицами Peers, Friends, Tasks, Checks;
 - рендеринг страниц осуществляется на стороне сервера (технология Server-Side Rendering);  
-- Spring Boot, Controller, JpaRepository, Java;  
+- Java, Spring Boot, MVC, Hibernate;  
 - HTML, CSS.
 
 Видео работающего приложения:  
